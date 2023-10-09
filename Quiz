@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class MultipleChoiceQuiz {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Questions
+        String[] questions = {
+            "1. What is the capital of France?",
+            "2. Which planet is known as the Red Planet?",
+            "3. What is the largest mammal on Earth?",
+        };
+
+        // Choices for each question
+        String[][] choices = {
+            {"A) London", "B) Paris", "C) Berlin", "D) Madrid"},
+            {"A) Venus", "B) Mars", "C) Jupiter", "D) Saturn"},
+            {"A) Elephant", "B) Blue Whale", "C) Giraffe", "D) Gorilla"},
+        };
+
+        // Correct answers
+        char[] correctAnswers = {'B', 'B', 'B'};
+
+        // User's answers
+        char[] userAnswers = new char[questions.length];
+
+        // Display and gather user input
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            for (String choice : choices[i]) {
+                System.out.println(choice);
+            }
+
+            System.out.print("Your answer: ");
+            userAnswers[i] = scanner.next().toUpperCase().charAt(0);
+        }
+
+        // Display results
+        System.out.println("\nResults:");
+        int correctCount = 0;
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println("Question " + (i + 1) + ": " + (userAnswers[i] == correctAnswers[i] ? "Correct" : "Incorrect"));
+            if (userAnswers[i] == correctAnswers[i]) {
+                correctCount++;
+            }
+        }
+
+        // Display overall score
+        System.out.println("\nYour total score: " + correctCount + "/" + questions.length);
+    }
+}
